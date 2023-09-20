@@ -9,5 +9,6 @@ config();
 app.disable('x-powered-by');
 app.use(cors());
 app.use(morgan('dev'));
+app.use(express.json());
 
 export { app };
