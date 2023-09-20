@@ -1,9 +1,6 @@
 import { options } from '../config.js';
-import {
-  extPropsFromList,
-  extProps,
-  urlConstructor,
-} from '../libs/helpers.js';
+import { filterList, filterMovie } from '../libs/filterProps.js';
+import { urlConstructor } from '../libs/urlConstructor.js';
 
 export class Media {
   static getSearch = async ({ search, lang = 'en-US', page = 1 }) => {
@@ -12,7 +9,7 @@ export class Media {
       options
     );
     const data = await response.json(response);
-    return extPropsFromList(data);
+    return filterList(data);
   };
 
   static getTrending = async (timeWindow = 'week') => {
@@ -21,7 +18,7 @@ export class Media {
       options
     );
     const data = await response.json();
-    return extPropsFromList(data);
+    return filterList(data);
   };
 
   static getMediaDetails = async ({ lang, id, mediaType }) => {
@@ -29,6 +26,6 @@ export class Media {
 
     const response = await fetch(url, options);
     const data = await response.json();
-    return extProps(data);
+    return filterMovie(data);
   };
 }
