@@ -10,6 +10,7 @@ export class AuthController {
       const newUser = new User({
         username,
         email,
+        favorites: [],
         password: await bcrypt.hash(password, 10),
       });
 
@@ -69,5 +70,24 @@ export class AuthController {
   static Logout = (req, res) => {
     res.cookie('token', '', { expires: new Date(0) });
     res.sendStatus(200);
+  };
+
+  static Profile = async (req, res) => {
+    try {
+      const { username, email, createdAt, updatedAt } = await User.findOne({
+        _id: req.user.id,
+      });
+
+      res.json({
+        user: {
+          username,
+          email,
+          createdAt,
+          updatedAt,
+        },
+      });
+    } catch (error) {
+      res.status(400).json({ status: 'Failure', message: 'User not found' });
+    }
   };
 }
