@@ -8,8 +8,8 @@ export class MediaController {
   }
 
   static async Trending(req, res) {
-    const { timeWindow } = req.query;
-    const data = await Media.getTrending(timeWindow);
+    const { timeWindow, page } = req.query;
+    const data = await Media.getTrending(timeWindow, page);
     res.json(data);
   }
 
