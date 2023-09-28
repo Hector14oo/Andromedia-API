@@ -1,5 +1,5 @@
 import { options } from '../config.js';
-import { filterList, filterMovie } from '../libs/filterProps.js';
+import { getDetails, getDetailsFromList } from '../libs/filters/index.js';
 import { urlConstructor } from '../libs/urlConstructor.js';
 
 export class Media {
@@ -9,23 +9,29 @@ export class Media {
       options
     );
     const data = await response.json(response);
-    return filterList(data);
+    return getDetailsFromList(data);
   };
 
-  static getTrending = async (timeWindow = 'week') => {
+  static getTrending = async (timeWindow = 'week', page = 1) => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/trending/all/${timeWindow}?`,
+      `https://api.themoviedb.org/3/trending/all/${timeWindow}?page=${page}`,
       options
     );
     const data = await response.json();
-    return filterList(data);
+    return getDetailsFromList(data);
   };
 
   static getMediaDetails = async ({ lang, id, mediaType }) => {
     const url = urlConstructor({ lang, id, mediaType });
-
     const response = await fetch(url, options);
     const data = await response.json();
-    return filterMovie(data);
+
+    if(mediaType !== 'people'){
+      const reviewsRes = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/reviews`, options);
+      const reviewsData = await reviewsRes.json();
+
+      return getDetails(data, mediaType, reviewsData);
+    }
+    return getDetails(data, mediaType);
   };
 }
