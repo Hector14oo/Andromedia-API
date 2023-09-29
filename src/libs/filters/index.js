@@ -7,18 +7,18 @@ export const getDetailsFromList = ({
   results,
   total_pages,
   total_results,
-}) => {
+}, lang) => {
   const filteredList = results
     .map((data) => {
       switch (data.media_type) {
         case 'movie':
-          return movieBasicDetails(data);
+          return movieBasicDetails(data, lang);
 
         case 'tv':
-          return tvShowBasicDetails(data);
+          return tvShowBasicDetails(data, lang);
 
         case 'person':
-          return personBasicDetails(data);
+          return personBasicDetails(data, lang);
         default:
           return console.error('getDetailsFromList: Unknown media type');
       }
@@ -39,7 +39,7 @@ export const getDetails = (data, media_type, reviews) => {
       return movieExtraDetails(data, reviews);
 
     case 'tv':
-      return tvShowExtraDetails(data);
+      return tvShowExtraDetails(data, reviews);
 
     case 'person':
       return personExtraDetails(data);
