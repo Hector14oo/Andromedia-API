@@ -50,7 +50,6 @@ export const movieExtraDetails = (movie, reviews) => {
     release_date,
     vote_average,
     belongs_to_collection,
-    media_type,
   } = movie;
 
   const collection = belongs_to_collection
@@ -81,6 +80,5 @@ export const movieExtraDetails = (movie, reviews) => {
     date: release_date,
     votes: vote_average,
     collection,
-    type: media_type,
   };
 };
