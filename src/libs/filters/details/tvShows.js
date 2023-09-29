@@ -1,7 +1,8 @@
 import { getGenres } from '../../constants/genres.js';
+import { reviewsFilter } from './reviews.js';
 import { imagesObj, imagesFromList, videosFromList } from './assets.js';
 
-export const tvShowBasicDetails = (tvShow) => {
+export const tvShowBasicDetails = (tvShow, lang) => {
   const {
     id,
     name,
@@ -29,10 +30,11 @@ export const tvShowBasicDetails = (tvShow) => {
     date: first_air_date,
     votes: vote_average,
     type: media_type,
+    url: `http://localhost:1234/api/media/tv/${id}${lang ? '?lang=' + lang : ''}`,
   };
 };
 
-export const tvShowExtraDetails = (tvShow) => {
+export const tvShowExtraDetails = (tvShow, reviews) => {
   const {
     id,
     name,
@@ -65,6 +67,7 @@ export const tvShowExtraDetails = (tvShow) => {
     genres: genres.map((genre) => genre.name),
     tagline,
     overview,
+    reviews: reviewsFilter(reviews),
     seasons: seasonsFilter(seasons),
     images: {
       posters: imagesFromList(images.posters),

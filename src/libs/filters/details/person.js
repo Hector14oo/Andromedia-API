@@ -2,7 +2,7 @@ import { imagesFromList } from './assets.js';
 import { movieBasicDetails } from './movie.js';
 import { genders } from '../../constants/genders.js';
 
-export const personBasicDetails = (person) => {
+export const personBasicDetails = (person, lang) => {
   const { adult, id, name, profile_path, media_type } = person;
 
   return {
@@ -14,6 +14,7 @@ export const personBasicDetails = (person) => {
       original: `https://image.tmdb.org/t/p/original${profile_path}`,
     },
     type: media_type,
+    url: `http://localhost:1234/api/media/person/${id}${lang ? '?lang=' + lang : ''}`,
   };
 };
 
