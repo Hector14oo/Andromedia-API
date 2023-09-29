@@ -9,12 +9,12 @@ export class Media {
       options
     );
     const data = await response.json(response);
-    return getDetailsFromList(data);
+    return getDetailsFromList(data, lang);
   };
 
-  static getTrending = async (timeWindow = 'week', page = 1) => {
+  static getTrending = async ({timeWindow = 'week', lang = 'en-US', page = 1}) => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/trending/all/${timeWindow}?page=${page}`,
+      `https://api.themoviedb.org/3/trending/all/${timeWindow}?language=${lang}&page=${page}`,
       options
     );
     const data = await response.json();
