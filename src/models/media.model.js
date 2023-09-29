@@ -18,7 +18,7 @@ export class Media {
       options
     );
     const data = await response.json();
-    return getDetailsFromList(data);
+    return getDetailsFromList(data, lang);
   };
 
   static getMediaDetails = async ({ lang, id, mediaType }) => {
