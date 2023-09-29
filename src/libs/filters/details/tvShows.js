@@ -13,6 +13,7 @@ export const tvShowBasicDetails = (tvShow) => {
     backdrop_path,
     first_air_date,
     vote_average,
+    media_type,
   } = tvShow;
 
   const genres = getGenres(genre_ids, 'tv')
@@ -27,6 +28,7 @@ export const tvShowBasicDetails = (tvShow) => {
     ...imagesObj({poster_path, backdrop_path}),
     date: first_air_date,
     votes: vote_average,
+    type: media_type,
   };
 };
 

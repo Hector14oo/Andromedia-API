@@ -3,7 +3,7 @@ import { movieBasicDetails } from './movie.js';
 import { genders } from '../../constants/genders.js';
 
 export const personBasicDetails = (person) => {
-  const { adult, id, name, profile_path } = person;
+  const { adult, id, name, profile_path, media_type } = person;
 
   return {
     adult,
@@ -13,6 +13,7 @@ export const personBasicDetails = (person) => {
       light: `https://image.tmdb.org/t/p/w185${profile_path}`,
       original: `https://image.tmdb.org/t/p/original${profile_path}`,
     },
+    type: media_type,
   };
 };
 
