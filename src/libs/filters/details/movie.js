@@ -3,7 +3,7 @@ import { runtimeCalculator } from './runtimeCalculator.js';
 import { reviewsFilter } from './reviews.js';
 import { imagesObj, imagesFromList, videosFromList } from './assets.js';
 
-export const movieBasicDetails = (movie) => {
+export const movieBasicDetails = (movie, lang) => {
   const {
     id,
     title,
@@ -33,6 +33,7 @@ export const movieBasicDetails = (movie) => {
     year: release_date,
     votes: vote_average,
     type: media_type,
+    url: `http://localhost:1234/api/media/movie/${id}${lang ? '?lang=' + lang : ''}`,
   };
 };
 
