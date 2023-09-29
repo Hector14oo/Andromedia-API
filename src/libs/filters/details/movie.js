@@ -15,6 +15,7 @@ export const movieBasicDetails = (movie) => {
     backdrop_path,
     release_date,
     vote_average,
+    media_type
   } = movie;
 
   if (!genre_ids.lenght && !overview && !release_date) return null;
@@ -31,6 +32,7 @@ export const movieBasicDetails = (movie) => {
     ...imagesObj({ poster_path, backdrop_path }),
     year: release_date,
     votes: vote_average,
+    type: media_type,
   };
 };
 
@@ -48,6 +50,7 @@ export const movieExtraDetails = (movie, reviews) => {
     release_date,
     vote_average,
     belongs_to_collection,
+    media_type,
   } = movie;
 
   const collection = belongs_to_collection
@@ -78,5 +81,6 @@ export const movieExtraDetails = (movie, reviews) => {
     date: release_date,
     votes: vote_average,
     collection,
+    type: media_type,
   };
 };
