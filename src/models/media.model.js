@@ -1,5 +1,5 @@
 import { options } from '../config.js';
-import { getDetails, getDetailsFromList } from '../libs/filters/index.js';
+import { getDetails, getDetailsFromList, getSeasonDetails } from '../libs/filters/index.js';
 import { urlConstructor } from '../libs/urlConstructor.js';
 
 export class Media {
@@ -34,4 +34,11 @@ export class Media {
     }
     return getDetails(data, mediaType);
   };
+
+  static getSeasonDetails = async ({lang = 'en-US', id, seasonNumber}) => {
+    const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?lang=${lang}`, options);
+    const data = await response.json();
+
+    return getSeasonDetails(data)
+  }
 }

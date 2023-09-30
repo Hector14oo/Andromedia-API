@@ -1,6 +1,7 @@
 import { getGenres } from '../../constants/genres.js';
 import { reviewsFilter } from './reviews.js';
 import { imagesObj, imagesFromList, videosFromList } from './assets.js';
+import { seasonDetailsFromList } from './season.js';
 
 export const tvShowBasicDetails = (tvShow, lang) => {
   const {
@@ -50,16 +51,6 @@ export const tvShowExtraDetails = (tvShow, reviews) => {
     status,
   } = tvShow;
 
-  const seasonsFilter = (list) => {
-    return list.map(({ id, name, season_number, episode_count, poster_path }) => ({
-      id,
-      title: name,
-      number: season_number,
-      episodes: episode_count,
-      poster: poster_path ? imagesObj({poster_path}).poster : null,
-    }));
-  };
-
   return {
     id,
     title: name,
@@ -68,7 +59,7 @@ export const tvShowExtraDetails = (tvShow, reviews) => {
     tagline,
     overview,
     reviews: reviewsFilter(reviews),
-    seasons: seasonsFilter(seasons),
+    seasons: seasonDetailsFromList(seasons),
     images: {
       posters: imagesFromList(images.posters),
       backdrops: imagesFromList(images.backdrops),

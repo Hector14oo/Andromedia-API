@@ -21,9 +21,9 @@ export class MediaController {
   }
 
   static async SeasonDetails(req, res) {
-    const { id, seasonId } = req.params;
+    const { id, seasonNumber } = req.params;
     const { lang } = req.query;
-    const data = await Media.getSeasonDetails({ lang, id, seasonId });
+    const data = await Media.getSeasonDetails({ lang, id, seasonNumber });
     res.json(data);
   }
 }

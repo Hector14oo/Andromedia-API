@@ -1,13 +1,12 @@
-import { movieBasicDetails, movieExtraDetails} from './details/movie.js';
+import { movieBasicDetails, movieExtraDetails } from './details/movie.js';
 import { tvShowBasicDetails, tvShowExtraDetails } from './details/tvShows.js';
 import { personBasicDetails, personExtraDetails } from './details/person.js';
+import { seasonExtraDetails } from './details/season.js';
 
-export const getDetailsFromList = ({
-  page,
-  results,
-  total_pages,
-  total_results,
-}, lang) => {
+export const getDetailsFromList = (
+  { page, results, total_pages, total_results },
+  lang
+) => {
   const filteredList = results
     .map((data) => {
       switch (data.media_type) {
@@ -46,4 +45,8 @@ export const getDetails = (data, media_type, reviews) => {
     default:
       return console.error('getDetails: Unknown media type');
   }
+};
+
+export const getSeasonDetails = (data) => {
+  return seasonExtraDetails(data);
 };
