@@ -19,4 +19,11 @@ export class MediaController {
     const data = await Media.getMediaDetails({ lang, id, mediaType });
     res.json(data);
   }
+
+  static async SeasonDetails(req, res) {
+    const { id, seasonId } = req.params;
+    const { lang } = req.query;
+    const data = await Media.getSeasonDetails({ lang, id, seasonId });
+    res.json(data);
+  }
 }
