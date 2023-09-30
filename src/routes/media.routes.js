@@ -8,3 +8,5 @@ mediaRouter.get('/', MediaController.Search);
 mediaRouter.get('/trending', MediaController.Trending);
 
 mediaRouter.get('/:mediaType/:id', MediaController.MediaDetails);
+
+mediaRouter.get('/tv/:id/season/:seasonId', MediaController.SeasonDetails);
