@@ -30,9 +30,9 @@ export class Media {
       const reviewsRes = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/reviews`, options);
       const reviewsData = await reviewsRes.json();
 
-      return getDetails(data, mediaType, reviewsData);
+      return getDetails({data, media_type: mediaType, reviews: reviewsData, lang});
     }
-    return getDetails(data, mediaType);
+    return getDetails({data, media_type: mediaType, lang});
   };
 
   static getSeasonDetails = async ({lang = 'en-US', id, seasonNumber}) => {

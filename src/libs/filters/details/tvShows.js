@@ -35,7 +35,7 @@ export const tvShowBasicDetails = (tvShow, lang) => {
   };
 };
 
-export const tvShowExtraDetails = (tvShow, reviews) => {
+export const tvShowExtraDetails = (tvShow, reviews, lang) => {
   const {
     id,
     name,
@@ -59,7 +59,7 @@ export const tvShowExtraDetails = (tvShow, reviews) => {
     tagline,
     overview,
     reviews: reviewsFilter(reviews),
-    seasons: seasonDetailsFromList(seasons),
+    seasons: seasonDetailsFromList(seasons, id, lang),
     images: {
       posters: imagesFromList(images.posters),
       backdrops: imagesFromList(images.backdrops),

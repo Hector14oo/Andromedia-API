@@ -32,13 +32,13 @@ export const getDetailsFromList = (
   };
 };
 
-export const getDetails = (data, media_type, reviews) => {
+export const getDetails = ({ data, media_type, reviews, lang }) => {
   switch (media_type) {
     case 'movie':
       return movieExtraDetails(data, reviews);
 
     case 'tv':
-      return tvShowExtraDetails(data, reviews);
+      return tvShowExtraDetails(data, reviews, lang);
 
     case 'person':
       return personExtraDetails(data);
