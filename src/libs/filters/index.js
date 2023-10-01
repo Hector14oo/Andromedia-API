@@ -41,7 +41,7 @@ export const getDetails = ({ data, media_type, reviews, lang }) => {
       return tvShowExtraDetails(data, reviews, lang);
 
     case 'person':
-      return personExtraDetails(data);
+      return personExtraDetails(data, lang);
     default:
       return console.error('getDetails: Unknown media type');
   }

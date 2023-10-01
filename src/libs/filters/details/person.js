@@ -18,7 +18,7 @@ export const personBasicDetails = (person, lang) => {
   };
 };
 
-export const personExtraDetails = (person) => {
+export const personExtraDetails = (person, lang) => {
   const {
     adult,
     id,
@@ -40,7 +40,7 @@ export const personExtraDetails = (person) => {
       cast: cast.map(({ credit_id, character, ...movie }) => ({
         creditId: credit_id,
         character,
-        ...movieBasicDetails(movie),
+        ...movieBasicDetails(movie, lang),
       })),
       crew: crew.map(({ credit_id, department, job, ...movie }) => ({
         creditId: credit_id,
