@@ -2,6 +2,7 @@ import { getGenres } from '../../constants/genres.js';
 import { runtimeCalculator } from './runtimeCalculator.js';
 import { reviewsFilter } from './reviews.js';
 import { imagesObj, imagesFromList, videosFromList } from './assets.js';
+import { personBasicDetails } from './person.js';
 
 export const movieBasicDetails = (movie, lang) => {
   const {
@@ -37,7 +38,7 @@ export const movieBasicDetails = (movie, lang) => {
   };
 };
 
-export const movieExtraDetails = (movie, reviews) => {
+export const movieExtraDetails = (movie, reviews, credits, lang) => {
   const {
     id,
     title,
@@ -81,5 +82,9 @@ export const movieExtraDetails = (movie, reviews) => {
     date: release_date,
     votes: vote_average,
     collection,
+    credits: {
+      cast: credits.cast.map(({character, ...data}) => ({character, ...personBasicDetails(data, lang)})),
+      crew: credits.crew.map(({department, job, ...data}) => ({department, job, ...personBasicDetails(data, lang)}))
+    }
   };
 };

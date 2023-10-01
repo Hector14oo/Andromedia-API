@@ -30,6 +30,12 @@ export class Media {
       const reviewsRes = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/reviews`, options);
       const reviewsData = await reviewsRes.json();
 
+      if(mediaType === 'movie'){
+        const creditsRes = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, options);
+        const creditsData = await creditsRes.json();
+
+        return getDetails({data, media_type: mediaType, reviews: reviewsData, credits: creditsData, lang});
+      }
       return getDetails({data, media_type: mediaType, reviews: reviewsData, lang});
     }
     return getDetails({data, media_type: mediaType, lang});

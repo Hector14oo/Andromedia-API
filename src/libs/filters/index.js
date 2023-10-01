@@ -32,10 +32,10 @@ export const getDetailsFromList = (
   };
 };
 
-export const getDetails = ({ data, media_type, reviews, lang }) => {
+export const getDetails = ({ data, media_type, reviews, credits, lang }) => {
   switch (media_type) {
     case 'movie':
-      return movieExtraDetails(data, reviews);
+      return movieExtraDetails(data, reviews, credits, lang);
 
     case 'tv':
       return tvShowExtraDetails(data, reviews, lang);
