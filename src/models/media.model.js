@@ -5,12 +5,12 @@ import { getDetails, getDetailsFromList, getSeasonDetails } from '../libs/filter
 export class Media {
   static getSearch = async ({ search, page, lang }) => {
     const data = await fetchAPI(SEARCH({ search, page, lang }));
-    return getDetailsFromList(data, lang);
+    return getDetailsFromList({ data, lang });
   };
 
   static getTrending = async ({ timeWindow, page, lang }) => {
     const data = await fetchAPI(TRENDING({ timeWindow, page, lang }));
-    return getDetailsFromList(data, lang);
+    return getDetailsFromList({ data, lang });
   };
 
   static getMediaDetails = async ({ mediaType, id, lang }) => {
