@@ -1,5 +1,5 @@
 import { movieBasicDetails, movieExtraDetails } from './movie.js';
-import { tvShowBasicDetails, tvShowExtraDetails } from './tvShows.js';
+import { tvShowBasicDetails, tvShowExtraDetails } from './tvShow.js';
 import { personBasicDetails, personExtraDetails } from './person.js';
 
 export const BasicDetails = {
