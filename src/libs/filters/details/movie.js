@@ -8,7 +8,7 @@ export const movieBasicDetails = ({ data, lang }) => {
   if (!genre_ids.lenght && !overview && !release_date) return null;
 
   const images = imagesObj({ poster_path, backdrop_path });
-  const url = `${globalThis.process.env}/api/media/movie/${id}${lang || ''}`
+  const url = `${globalThis.process.env.HOST}/api/media/movie/${id}?lang=${lang}`
 
   return {
     id,
