@@ -1,50 +1,21 @@
-import { movieBasicDetails, movieExtraDetails } from './details/movie.js';
-import { tvShowBasicDetails, tvShowExtraDetails } from './details/tvShows.js';
-import { personBasicDetails, personExtraDetails } from './details/person.js';
-import { seasonExtraDetails } from './details/season.js';
+import { BasicDetails, ExtraDetails, seasonExtraDetails } from './details/index.js';
 
-export const getDetailsFromList = (
-  { page, results, total_pages, total_results },
-  lang
-) => {
-  const filteredList = results
-    .map((data) => {
-      switch (data.media_type) {
-        case 'movie':
-          return movieBasicDetails(data, lang);
+export const getDetailsFromList = (data, lang) => {
+  const { page, results, total_pages, total_results } = data;
 
-        case 'tv':
-          return tvShowBasicDetails(data, lang);
-
-        case 'person':
-          return personBasicDetails(data, lang);
-        default:
-          return console.error('getDetailsFromList: Unknown media type');
-      }
-    })
-    .filter((media) => media !== null);
+  const filteredList = results.map((data) => BasicDetails[data.media_type]({data, lang})).filter((media) => media !== null);
 
   return {
     page,
     results: filteredList,
-    total_pages,
-    total_results,
+    totalResults: total_pages,
+    totalPages: total_results,
   };
 };
 
-export const getDetails = ({ data, mediaType, reviews, credits, lang }) => {
-  switch (mediaType) {
-    case 'movie':
-      return movieExtraDetails(data, reviews, credits, lang);
-
-    case 'tv':
-      return tvShowExtraDetails(data, reviews, lang);
-
-    case 'person':
-      return personExtraDetails(data, lang);
-    default:
-      return console.error('getDetails: Unknown media type');
-  }
+export const getDetails = ({ data, mediaType, lang }) => {
+  const { reviews, credits } = data;
+  return ExtraDetails[mediaType]({data, reviews, credits, lang})
 };
 
 export const getSeasonDetails = (data) => {
