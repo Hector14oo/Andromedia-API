@@ -37,7 +37,7 @@ export class Media {
       data.credits = creditsData;
     }
 
-    return getDetails({data, media_type: mediaType, lang});
+    return getDetails({data, mediaType, lang});
   };
 
   static getSeasonDetails = async ({lang = 'en-US', id, seasonNumber}) => {

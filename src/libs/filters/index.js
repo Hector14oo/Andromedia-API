@@ -32,8 +32,8 @@ export const getDetailsFromList = (
   };
 };
 
-export const getDetails = ({ data, media_type, reviews, credits, lang }) => {
-  switch (media_type) {
+export const getDetails = ({ data, mediaType, reviews, credits, lang }) => {
+  switch (mediaType) {
     case 'movie':
       return movieExtraDetails(data, reviews, credits, lang);
 
