@@ -1,4 +1,4 @@
-import { fetchAPI } from '../libs/fetch.js';
+import { fetchAPI } from '../libs/fetchAPI.js';
 import { SEARCH, TRENDING, MEDIADETAILS, REVIEWS, MOVIECREDITS, SEASONDETAILS } from '../libs/constants/endpoints.js';
 import { getDetails, getDetailsFromList, getSeasonDetails } from '../libs/filters/index.js';
 
