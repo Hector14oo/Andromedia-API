@@ -22,22 +22,21 @@ export class Media {
   };
 
   static getMediaDetails = async ({ lang, id, mediaType }) => {
-    const url = urlConstructor({ lang, id, mediaType });
-    const response = await fetch(url, options);
+    const response = await fetch(urlConstructor({ lang, id, mediaType }), options);
     const data = await response.json();
 
     if(mediaType !== 'people'){
       const reviewsRes = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/reviews`, options);
       const reviewsData = await reviewsRes.json();
-
-      if(mediaType === 'movie'){
-        const creditsRes = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, options);
-        const creditsData = await creditsRes.json();
-
-        return getDetails({data, media_type: mediaType, reviews: reviewsData, credits: creditsData, lang});
-      }
-      return getDetails({data, media_type: mediaType, reviews: reviewsData, lang});
+      data.reviews = reviewsData;
     }
+
+    if(mediaType === 'movie'){
+      const creditsRes = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, options);
+      const creditsData = await creditsRes.json();
+      data.credits = creditsData;
+    }
+
     return getDetails({data, media_type: mediaType, lang});
   };
 
