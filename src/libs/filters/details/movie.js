@@ -2,8 +2,8 @@ import { getGenres } from '../../constants/genres.js';
 import { imagesObj, imagesFromList, videosFromList, reviewsFilter, runtimeCalculator } from './extras/index.js';
 import { personBasicDetails } from './person.js';
 
-export const movieBasicDetails = (movie, lang) => {
-  const { id, title, adult, genre_ids, tagline, overview, poster_path, backdrop_path, release_date, vote_average, media_type } = movie;
+export const movieBasicDetails = ({ data, lang }) => {
+  const { id, title, adult, genre_ids, tagline, overview, poster_path, backdrop_path, release_date, vote_average, media_type } = data;
 
   if (!genre_ids.lenght && !overview && !release_date) return null;
 
