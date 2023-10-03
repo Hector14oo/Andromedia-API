@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import User from '../models/user.model.js';
+import User from '../schemas/user.schema.js';
 import { createJWT } from '../libs/jwt.js';
 
 export class AuthController {
@@ -10,7 +10,6 @@ export class AuthController {
       const newUser = new User({
         username,
         email,
-        favorites: [],
         password: await bcrypt.hash(password, 10),
       });
 
