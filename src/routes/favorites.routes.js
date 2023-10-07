@@ -4,6 +4,8 @@ import { FavoritesController } from '../controllers/favorites.controller.js';
 
 export const favoritesRouter = Router();
 
-favoritesRouter.get('/favorites', validateJWT, FavoritesController.getFavorites);
-favoritesRouter.post('/favorites/:id', validateJWT, FavoritesController.addFavorite);
-favoritesRouter.delete('/favorites/:id', validateJWT, FavoritesController.removeFavorite);
+favoritesRouter.get('/', validateJWT, FavoritesController.getFavorites);
+
+favoritesRouter.post('/', validateJWT, FavoritesController.addFavorite);
+
+favoritesRouter.delete('/:id', validateJWT, FavoritesController.removeFavorite);
