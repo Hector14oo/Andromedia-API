@@ -1,25 +1,38 @@
-import Favorite from '../schemas/favorite.schema.js';
+import { FavoritesModel } from "../models/favorites.model.js";
 
 export class FavoritesController {
   static getFavorites = async (req, res) => {
-    const favorites = await Favorite.find({ userId: req.params.user.id });
-    return res.json(favorites);
+    try {
+      const { id } = req.user;
+      const data = await FavoritesModel.getFavorites({ userId: id });
+      res.json(200, data);
+    } catch (error) {
+      res.json(400, error.message)
+    }
   };
 
-  static addFavorites = async (req, res) => {
-    const newFavorite = new Favorite({
-      ...req.params.movie,
-      userId: req.params.user.id,
-    })
-
-    const savedFavorite = await newFavorite.save();
-
-    res.json(savedFavorite);
+  static addFavorite = async (req, res) => {
+    const { movieId, title, poster, url } = req.body;
+    const { id } = req.user;
+    
+    try {
+      const data = await FavoritesModel.addFavorites({ movieId, title, poster, url, userId: id });
+      res.json(201, data);
+    } catch (error) {
+      res.json(400, error.message)
+    }
   };
-
-  static removeFavorites = async (req, res) => {
-    const removedFavorite = await Favorite.findByIdAndRemove({ userId: req.params.user.id, id: req.params.movieId });
-    if(!removedFavorite) return res.status(404).json({ message: 'Favorite not found' });
-    return res.status(204);
+  
+  static removeFavorite = async (req, res) => {
+    const { id } = req.params;
+    
+    try {
+      const data = await FavoritesModel.removeFavorite({ favId: id });
+      if(!data) throw new Error({ message: 'File not found' })
+      res.json(204, { message: 'Favorite deleted successfully' });
+    } catch (error) {
+      if(error.message === 'File not found') return res.json(404, error.message)
+      res.json(400, error.message)
+    }
   };
 }
