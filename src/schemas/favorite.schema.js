@@ -1,10 +1,11 @@
 import { Schema, model } from 'mongoose';
 
 export const FavoriteSchema = new Schema({
-  id: { type: Number, required: true },
+  movieId: { type: Number, required: true },
   title: { type: String, required: true },
-  posters: { type: Object, required: true },
+  poster: { type: Object, required: true },
   url: { type: String, required: true },
+  userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
-export default model('Favorite', FavoriteSchema)
+export default model('Favorite', FavoriteSchema);
