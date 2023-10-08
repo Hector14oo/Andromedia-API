@@ -11,3 +11,5 @@ authRouter.post('/login', AuthController.Login);
 authRouter.post('/logout', AuthController.Logout);
 
 authRouter.get('/profile', validateJWT, AuthController.Profile);
+
+authRouter.delete('/profile/:id', validateJWT, AuthController.DeleteAccount);

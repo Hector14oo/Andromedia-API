@@ -1,28 +1,31 @@
-import bcrypt from 'bcryptjs';
 import User from '../schemas/user.schema.js';
+import Favorite from '../schemas/favorite.schema.js'
+import bcrypt from 'bcryptjs';
 import { createJWT } from '../libs/jwt.js';
+import { fetchAPI } from '../libs/fetchAPI.js';
+import { options } from '../config.js';
+
 
 export class AuthController {
   static Register = async (req, res) => {
-    const { username, email, password } = req.body;
-
     try {
-      const newUser = new User({ username, email, password: await bcrypt.hash(password, 10) });
+      const { username, email, password } = req.body;
+      const APIkey = await fetchAPI('https://api.themoviedb.org/3/authentication/guest_session/new', options)
+      const newUser = new User({ username, email, password: await bcrypt.hash(password, 10), APIkey: APIkey.guest_session_id });
 
-      const { _id, ...data } = await newUser.save();
-      const token = await createJWT({ id: _id });
+      const savedUser = await newUser.save();
+      const token = await createJWT({ id: savedUser._id });
 
       res.cookie('token', token);
-      res.status(201).json({ status: 'Sucess', message: 'The user has been registered', user: { id: _id, ...data } });
+      res.status(201).json({ status: 'Sucess', message: 'The user has been registered', user: { id: savedUser._id, username: savedUser.username, email: savedUser.email, APIkey: savedUser.APIkey } });
     } catch (error) {
       res.status(409).json({ status: 'Failure', message: 'The user is already registered' });
     }
   };
 
   static Login = async (req, res) => {
-    const { email, password } = req.body;
-
     try {
+      const { email, password } = req.body;
       const userFound = await User.findOne({ email });
       if (!userFound) return res.status(400).json({ message: 'User not found' });
 
@@ -62,4 +65,15 @@ export class AuthController {
       res.status(400).json({ status: 'Failure', message: 'User not found' });
     }
   };
+
+  static DeleteAccount = async (req, res) => {
+    try {
+      const { id } = req.params
+      await User.findByIdAndDelete({ _id: id})
+      await Favorite.deleteMany({ userId: id })
+      res.status(204).json({ status: 'Success', message: 'User deleted' })
+    } catch (error) {
+      res.status(400).json({ status: 'Failure', message: 'User not found' });
+    }
+  }
 }
