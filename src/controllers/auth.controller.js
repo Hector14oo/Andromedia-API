@@ -7,31 +7,15 @@ export class AuthController {
     const { username, email, password } = req.body;
 
     try {
-      const newUser = new User({
-        username,
-        email,
-        password: await bcrypt.hash(password, 10),
-      });
+      const newUser = new User({ username, email, password: await bcrypt.hash(password, 10) });
 
-      const savedUser = await newUser.save();
-      const token = await createJWT({ id: savedUser._id });
+      const { _id, ...data } = await newUser.save();
+      const token = await createJWT({ id: _id });
 
       res.cookie('token', token);
-      res.status(201).json({
-        status: 'Sucess',
-        message: 'The user has been registered',
-        user: {
-          id: savedUser._id,
-          username: savedUser.username,
-          email: savedUser.email,
-          createdAt: savedUser.createdAt,
-          updatedAt: savedUser.updatedAt,
-        },
-      });
+      res.status(201).json({ status: 'Sucess', message: 'The user has been registered', user: { id: _id, ...data } });
     } catch (error) {
-      res
-        .status(409)
-        .json({ status: 'Failure', message: 'The user is already registered' });
+      res.status(409).json({ status: 'Failure', message: 'The user is already registered' });
     }
   };
 
@@ -40,12 +24,10 @@ export class AuthController {
 
     try {
       const userFound = await User.findOne({ email });
-      if (!userFound)
-        return res.status(400).json({ message: 'User not found' });
+      if (!userFound) return res.status(400).json({ message: 'User not found' });
 
       const isMatch = await bcrypt.compare(password, userFound.password);
-      if (!isMatch)
-        return res.status(400).json({ message: 'Invalid password' });
+      if (!isMatch) return res.status(400).json({ message: 'Invalid password' });
 
       const token = await createJWT({ id: userFound._id });
 
@@ -73,18 +55,9 @@ export class AuthController {
 
   static Profile = async (req, res) => {
     try {
-      const { username, email, createdAt, updatedAt } = await User.findOne({
-        _id: req.user.id,
-      });
+      const { username, email, createdAt, updatedAt } = await User.findOne({ _id: req.user.id });
 
-      res.json({
-        user: {
-          username,
-          email,
-          createdAt,
-          updatedAt,
-        },
-      });
+      res.json({ user: { username, email, createdAt, updatedAt } });
     } catch (error) {
       res.status(400).json({ status: 'Failure', message: 'User not found' });
     }
