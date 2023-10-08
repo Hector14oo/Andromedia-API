@@ -25,8 +25,8 @@ export const personExtraDetails = ({ data, lang }) => {
     const { cast, crew } = combined_credits;
 
     return {
-      cast: cast.map(({ credit_id, character, ...movie }) => ({ creditId: credit_id, character, ...movieBasicDetails(movie, lang) })),
-      crew: crew.map(({ credit_id, department, job, ...movie }) => ({ creditId: credit_id, department, job, ...movieBasicDetails(movie) })),
+      cast: cast.map(({ credit_id, character, ...movie }) => ({ creditId: credit_id, character, ...movieBasicDetails({ data: movie, lang }) })),
+      crew: crew.map(({ credit_id, department, job, ...movie }) => ({ creditId: credit_id, department, job, ...movieBasicDetails({ data: movie, lang }) })),
     };
   };
 

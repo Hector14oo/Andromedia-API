@@ -2,7 +2,13 @@ export const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization:
-      globalThis.process.env.API_KEY,
+  },
+};
+
+export const postOptions = {
+  method: 'POST',
+  headers: {
+    accept: 'application/json',
+    'Content-Type': 'application/json;charset=utf-8',
   },
 };

@@ -17,6 +17,10 @@ export const userSchema = new Schema(
       type: String,
       required: true,
     },
+    APIkey: {
+      type: String,
+      required: true,
+    }
   },
   {
     timestamps: true,

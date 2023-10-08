@@ -55,8 +55,8 @@ export const movieExtraDetails = ({ data, reviews, credits, lang }) => {
     votes: vote_average,
     collection: collection || null,
     credits: {
-      cast: credits.cast.map(({ character, ...data }) => ({ character, ...personBasicDetails(data, lang) })),
-      crew: credits.crew.map(({ department, job, ...data }) => ({ department, job, ...personBasicDetails(data, lang) })),
+      cast: credits.cast.map(({ character, ...data }) => ({ character, ...personBasicDetails({ data, lang }) })),
+      crew: credits.crew.map(({ department, job, ...data }) => ({ department, job, ...personBasicDetails({ data, lang }) })),
     },
   };
 };

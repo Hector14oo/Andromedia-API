@@ -3,7 +3,7 @@ import { BasicDetails, ExtraDetails, seasonExtraDetails } from './details/index.
 export const getDetailsFromList = ({ data, lang = 'en-US' }) => {
   const { page, results, total_pages, total_results } = data;
 
-  const filteredList = results.map((data) => BasicDetails[data.media_type]({data, lang})).filter((media) => media !== null);
+  const filteredList = results.map((data) => BasicDetails[data.media_type]({ data, lang })).filter((media) => media !== null);
 
   return {
     page,
@@ -15,7 +15,7 @@ export const getDetailsFromList = ({ data, lang = 'en-US' }) => {
 
 export const getDetails = ({ data, mediaType, lang = 'en-US' }) => {
   const { reviews, credits } = data;
-  return ExtraDetails[mediaType]({data, reviews, credits, lang})
+  return ExtraDetails[mediaType]({ data, reviews, credits, lang })
 };
 
 export const getSeasonDetails = (data) => {
