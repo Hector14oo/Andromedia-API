@@ -1,8 +1,13 @@
-import { options } from '../config.js';
+import { options, postOptions } from '../config.js';
 
-export const fetchAPI = async (URL) => {
+const object = {
+  GET: options,
+  POST: postOptions,
+};
+
+export const fetchAPI = async (URL, method = 'GET', body) => {
   try {
-    const response = await fetch(URL, options);
+    const response = await fetch(URL, { ...object[method], body });
     const data = await response.json(response);
     return data;
   } catch (error) {
