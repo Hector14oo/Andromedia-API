@@ -31,9 +31,8 @@ export class RateController {
   };
 
   static rateTvShow = async (req, res) => {
-    const { body } = req;
-
     try {
+      const { body } = req;
       const { guestId, id } = req.params;
       const data = await RateModel.addTvShowRate({ id, guestId, body });
 
