@@ -2,8 +2,6 @@ import User from '../schemas/user.schema.js';
 import Favorite from '../schemas/favorite.schema.js'
 import bcrypt from 'bcryptjs';
 import { createJWT } from '../libs/jwt.js';
-import { fetchAPI } from '../libs/fetchAPI.js';
-import { options } from '../config.js';
 
 
 export class AuthController {
