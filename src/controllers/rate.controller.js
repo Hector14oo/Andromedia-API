@@ -3,9 +3,8 @@ import { RateModel } from '../models/rate.model.js';
 export class RateController {
   static getRateList = async (req, res) => {
     try {
-      const { guestId } = req.params;
-      
-      const data = await RateModel.getRate({ guestId })
+      const { APIkey } = req.user;
+      const data = await RateModel.getRate({ guestId: APIkey })
 
       if (data.success === false) return res.status(data.status).json(data);
 
@@ -18,9 +17,9 @@ export class RateController {
   static rateMovie = async (req, res) => {
     try {
       const { body } = req;
-      const { guestId, id } = req.params;
-
-      const data = await RateModel.addMovieRate({ id, guestId, body });
+      const { APIkey } = req.user;
+      const { id } = req.params;
+      const data = await RateModel.addMovieRate({ id, guestId: APIkey, body });
 
       if (data.success === false) return res.status(data.status).json(data);
 
@@ -33,8 +32,9 @@ export class RateController {
   static rateTvShow = async (req, res) => {
     try {
       const { body } = req;
-      const { guestId, id } = req.params;
-      const data = await RateModel.addTvShowRate({ id, guestId, body });
+      const { APIkey } = req.user;
+      const { id } = req.params;
+      const data = await RateModel.addTvShowRate({ id, guestId: APIkey, body });
 
       if (data.success === false) return res.status(data.status).json(data);
 
