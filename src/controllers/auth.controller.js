@@ -10,7 +10,6 @@ export class AuthController {
   static Register = async (req, res) => {
     try {
       const { username, email, password } = req.body;
-      const APIkey = await fetchAPI('https://api.themoviedb.org/3/authentication/guest_session/new', options)
       const newUser = new User({ username, email, password: await bcrypt.hash(password, 10), APIkey: APIkey.guest_session_id });
 
       const savedUser = await newUser.save();
