@@ -3,13 +3,15 @@ import Favorite from '../schemas/favorite.schema.js'
 import bcrypt from 'bcryptjs';
 import { createJWT } from '../libs/jwt.js';
 
-export class AuthController {
-  userObj = ({ _id, username, email, APIkey }) => ({ id: _id, username, email, APIkey })
+const userObj = ({ _id, username, email, APIkey }) => {
+  return { id: _id, username, email, APIkey }
+}
 
+export class AuthController {
   static Register = async (req, res) => {
     try {
       const { username, email, password } = req.body;
-      const newUser = new User({ username, email, password: await bcrypt.hash(password, 10) });
+      const newUser = new User({ username, email, password: await bcrypt.hash(password, 10), APIkey: null });
 
       const savedUser = await newUser.save();
       const token = await createJWT({ id: savedUser._id });
@@ -17,7 +19,7 @@ export class AuthController {
       res.cookie('token', token);
       res.status(201).json({ status: 'Sucess', message: 'The user has been registered', user: userObj(savedUser)  });
     } catch (error) {
-      res.status(409).json({ status: 'Failure', message: 'The user is already registered' });
+      res.status(500).json({ status: 'Failure', message: error.message });
     }
   };
 
@@ -61,7 +63,7 @@ export class AuthController {
 
       const userDeleted = await User.findByIdAndDelete({ _id: id})
       if(!userDeleted) return res.status(404).json({ status: 'Failure', message: 'User not found' });
-      
+
       await Favorite.deleteMany({ userId: id })
 
       res.status(204).json({ status: 'Success', message: 'User deleted' })
