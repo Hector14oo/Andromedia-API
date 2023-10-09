@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import { validateJWT } from '../middlewares/validateJWT.js';
 import { RateController } from '../controllers/rate.controller.js';
+import { checkUserApiKey } from '../middlewares/checkUserApiKey.js';
 
 export const rateRouter = Router();
 
-rateRouter.get('/:guestId/list', validateJWT, RateController.getRateList);
+rateRouter.get('/list', validateJWT, checkUserApiKey, RateController.getRateList);
 
-rateRouter.post('/:guestId/movie/:id', validateJWT, RateController.rateMovie);
+rateRouter.post('/movie/:id', validateJWT, checkUserApiKey, RateController.rateMovie);
 
-rateRouter.post('/:guestId/tv/:id', validateJWT, RateController.rateTvShow);
+rateRouter.post('/tv/:id', validateJWT, checkUserApiKey, RateController.rateTvShow);
