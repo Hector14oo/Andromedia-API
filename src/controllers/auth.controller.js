@@ -10,7 +10,15 @@ export class AuthController {
   static Register = async (req, res) => {
     try {
       const { username, email, password } = req.body;
-      const newUser = new User({ username, email, password: await bcrypt.hash(password, 10), APIkey: null });
+      const newUser = new User({ 
+        username, 
+        email, 
+        password: await bcrypt.hash(password, 10), 
+        APIkey: null, 
+        fullname: null, 
+        gender: null, 
+        picture: null 
+      });
 
       const savedUser = await newUser.save();
       const token = await createJWT({ id: savedUser._id });
