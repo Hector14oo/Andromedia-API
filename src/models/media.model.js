@@ -1,7 +1,7 @@
 import { fetchAPI } from '../libs/fetchAPI.js';
 import { SEARCH, TRENDING, MEDIADETAILS, REVIEWS, MOVIECREDITS, SEASONDETAILS } from '../libs/constants/endpoints.js';
 import { getDetails, getDetailsFromList, getSeasonDetails } from '../libs/filters/index.js';
-import { formatResponse } from '../libs/constants/errors.js';
+import { formatResponse } from '../libs/constants/statusCode.js';
 
 export class Media {
   static getSearch = async ({ search, page, lang }) => {
