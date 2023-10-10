@@ -1,4 +1,5 @@
 import User from '../schemas/user.schema.js';
+import Favorite from '../schemas/favorite.schema.js'; 
 
 export class ProfileController {
   static getProfile = async (req, res) => {
@@ -25,9 +26,9 @@ export class ProfileController {
   
   static deleteProfile = async (req, res) => {
     try {
-      const { id } = req.params
+      const { id } = req.user
 
-      const userDeleted = await User.findByIdAndDelete({ _id: id})
+      const userDeleted = await User.findByIdAndDelete(id);
       if(!userDeleted) return res.status(404).json({ status: 'Failure', message: 'User not found' });
 
       await Favorite.deleteMany({ userId: id })
