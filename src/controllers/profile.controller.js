@@ -5,7 +5,7 @@ export class ProfileController {
   static getProfile = async (req, res) => {
     try {
       const { id } = req.user;
-      const data = await User.findById(id);
+      const data = await User.findById(id).select(['-password', '-__v']);
 
       res.json({ user: data });
     } catch (error) {
