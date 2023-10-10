@@ -6,7 +6,7 @@ export const userSchema = new Schema(
     email: { type: String, required: true, unique: true, trim: true },
     password: { type: String, required: true },
     APIkey: { type: String },
-    fullName: { type: String },
+    fullname: { type: String },
     gender: { type: String },
     picture: { type: String },
   },
