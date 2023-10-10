@@ -27,7 +27,7 @@ export class Media {
       data.reviews = reviewsData;
     }
     if (mediaType === 'movie') {
-      const creditsData = await fetchAPI(MOVIECREDITS({ id }));
+      const creditsData = await fetchAPI(MOVIECREDITS({ id, lang }));
       data.credits = creditsData;
     }
 
