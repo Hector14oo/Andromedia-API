@@ -23,8 +23,8 @@ export const REVIEWS = ({ mediaType, id }) => `https://api.themoviedb.org/3/${me
 export const MOVIECREDITS = ({ id, lang = 'en-US' }) => `https://api.themoviedb.org/3/movie/${id}/credits?${AUTH}&language=${lang}`;
 export const SEASONDETAILS = ({ id, seasonNumber, lang = 'en-US' }) => `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?${AUTH}&language=${lang}`
 
-export const ADDMOVIERATE = ({ id, guestId }) => `https://api.themoviedb.org/3/movie/${id}/rating?${AUTH}&guest_session_id=${guestId}`
-export const ADDTVSHOWRATE = ({ id, guestId }) => `https://api.themoviedb.org/3/tv/${id}/rating?${AUTH}&guest_session_id=${guestId}`
+export const MOVIERATE = ({ id, guestId }) => `https://api.themoviedb.org/3/movie/${id}/rating?${AUTH}&guest_session_id=${guestId}`
+export const TVSHOWRATE = ({ id, guestId }) => `https://api.themoviedb.org/3/tv/${id}/rating?${AUTH}&guest_session_id=${guestId}`
 
 export const GETRATEDMOVIES = ({ guestId, lang = 'en-US' }) => `https://api.themoviedb.org/3/guest_session/${guestId}/rated/movies?${AUTH}&language=${lang}`
 export const GETRATEDTVSHOWS = ({ guestId, lang = 'en-US' }) => `https://api.themoviedb.org/3/guest_session/${guestId}/rated/tv?${AUTH}&language=${lang}`
