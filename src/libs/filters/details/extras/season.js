@@ -32,7 +32,7 @@ export const seasonExtraDetails = ({ season }) => {
     number: season_number,
     date: air_date,
     overview,
-    episodes: episodeFilter(episodes),
+    episodes: episodeFilter({ list: episodes}),
     poster: poster_path ? imagesObj({ poster_path }).poster : null,
     votes: vote_average,
   };
