@@ -48,10 +48,10 @@ const httpStatusCodes = {
   47: 400
 };
 
-export const createError = (err) => {
+export const formatResponse = ({success, status_code, status_message}) => {
   return {
-    success: false,
-    status: httpStatusCodes[err.status_code],
-    message: err.status_message,
+    success: success,
+    status: httpStatusCodes[status_code],
+    message: status_message,
   }
 }

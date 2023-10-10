@@ -19,5 +19,5 @@ export const getDetails = ({ data, mediaType, lang = 'en-US' }) => {
 };
 
 export const getSeasonDetails = (data) => {
-  return seasonExtraDetails(data);
+  return seasonExtraDetails({ season: data });
 };

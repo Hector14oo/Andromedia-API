@@ -6,7 +6,7 @@ export class MediaController {
       const { search, lang, page } = req.query;
       const data = await Media.getSearch({ search, lang, page });
 
-      if(data.success === false) return res.status(data.status).json(data);
+      if(data.success === false) return res.status(data.status).json({ sucess: data.success, message: data.message });
 
       res.json(data);
     } catch (error) {
@@ -19,7 +19,7 @@ export class MediaController {
       const { timeWindow, page, lang } = req.query;
       const data = await Media.getTrending({ timeWindow, lang, page });
 
-      if(data.success === false) return res.status(data.status).json(data);
+      if(data.success === false) return res.status(data.status).json({ sucess: data.success, message: data.message });
 
       res.json(data);
     } catch (error) {
@@ -33,7 +33,7 @@ export class MediaController {
       const { lang } = req.query;
       const data = await Media.getMediaDetails({ lang, id, mediaType });
 
-      if(data.success === false) return res.status(data.status).json(data);
+      if(data.success === false) return res.status(data.status).json({ sucess: data.success, message: data.message });
 
       res.json(data);
     } catch (error) {
@@ -47,7 +47,7 @@ export class MediaController {
       const { lang } = req.query;
       const data = await Media.getSeasonDetails({ lang, id, seasonNumber });
 
-      if(data.success === false) return res.status(data.status).json(data);
+      if(data.success === false) return res.status(data.status).json({ sucess: data.success, message: data.message });
 
       res.json(data);
     } catch (error) {

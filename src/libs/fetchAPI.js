@@ -1,8 +1,9 @@
-import { options, postOptions } from '../config.js';
+import { options, postOptions, deleteOptions } from '../config.js';
 
 const object = {
   GET: options,
   POST: postOptions,
+  DELETE: deleteOptions,
 };
 
 export const fetchAPI = async (URL, method = 'GET', body) => {
