@@ -7,6 +7,6 @@ export const rateRouter = Router();
 
 rateRouter.get('/list', validateJWT, checkUserApiKey, RateController.getRateList);
 
-rateRouter.post('/movie/:id', validateJWT, checkUserApiKey, RateController.rateMovie);
+rateRouter.post('/:mediaType/:id', validateJWT, checkUserApiKey, RateController.addRate);
 
-rateRouter.post('/tv/:id', validateJWT, checkUserApiKey, RateController.rateTvShow);
+rateRouter.delete('/:mediaType/:id', validateJWT, checkUserApiKey, RateController.removeRate);
