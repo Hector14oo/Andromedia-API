@@ -1,5 +1,4 @@
 import User from '../schemas/user.schema.js';
-import Favorite from '../schemas/favorite.schema.js'
 import bcrypt from 'bcryptjs';
 import { createJWT } from '../libs/jwt.js';
 
@@ -46,29 +45,4 @@ export class AuthController {
     res.cookie('token', '', { expires: new Date(0) });
     res.sendStatus(200);
   };
-
-  static Profile = async (req, res) => {
-    try {
-      const { username, email, createdAt, updatedAt, APIKey } = await User.findOne({ _id: req.user.id });
-
-      res.json({ user: { username, email, createdAt, updatedAt, APIKey } });
-    } catch (error) {
-      res.status(400).json({ status: 'Failure', message: 'User not found' });
-    }
-  };
-
-  static DeleteAccount = async (req, res) => {
-    try {
-      const { id } = req.params
-
-      const userDeleted = await User.findByIdAndDelete({ _id: id})
-      if(!userDeleted) return res.status(404).json({ status: 'Failure', message: 'User not found' });
-
-      await Favorite.deleteMany({ userId: id })
-
-      res.status(204).json({ status: 'Success', message: 'User deleted' })
-    } catch (error) {
-      res.status(500).json({ status: 'Failure', message: error.message });
-    }
-  }
 }
