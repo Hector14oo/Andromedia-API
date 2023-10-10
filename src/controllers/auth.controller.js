@@ -2,8 +2,8 @@ import User from '../schemas/user.schema.js';
 import bcrypt from 'bcryptjs';
 import { createJWT } from '../libs/jwt.js';
 
-const userObj = ({ _id, username, email, APIkey }) => {
-  return { id: _id, username, email, APIkey }
+const userObj = ({ _id, username, email, APIkey, fullname, gender, picture }) => {
+  return { id: _id, username, email, APIkey, fullname, gender, picture }
 }
 
 export class AuthController {
