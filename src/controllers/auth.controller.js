@@ -26,7 +26,7 @@ export class AuthController {
       res.cookie('token', token);
       res.status(201).json({ status: 'Sucess', message: 'The user has been registered', user: userObj(savedUser)  });
     } catch (error) {
-      res.status(500).json({ status: 'Failure', message: 'The user is already register' });
+      res.status(500).json({ status: 'Failure', message: 'The user is already registered' });
     }
   };
 
