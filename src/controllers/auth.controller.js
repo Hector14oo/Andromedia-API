@@ -11,7 +11,7 @@ export class AuthController {
     try {
       const { username, email, password } = req.body;
       const newUser = new User({ 
-        username, 
+        username: null, 
         email, 
         password: await bcrypt.hash(password, 10), 
         APIkey: null, 
