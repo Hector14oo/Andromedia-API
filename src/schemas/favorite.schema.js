@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import { z } from 'zod';
 
 export const FavoriteSchema = new Schema({
   movieId: { type: Number, required: true },
@@ -9,3 +10,13 @@ export const FavoriteSchema = new Schema({
 });
 
 export default model('Favorite', FavoriteSchema);
+
+export const FavoriteValidator = z.object({
+  movieId: z.number(),
+  title: z.string(),
+  poster: z.object({
+    light: z.string().url(),
+    original: z.string().url(),
+  }),
+  url: z.string().url(),
+});
