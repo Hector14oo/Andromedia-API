@@ -24,7 +24,7 @@ export const authValidator = z.object({
 })
 
 export const updateValidator = z.object({
-  username: z.string().email().optional(),
+  username: z.string().optional(),
   email: z.string().email().optional(),
   password: z.string().min(6).max(20).optional(),
   fullname: z.string().optional(),
