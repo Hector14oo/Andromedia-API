@@ -7,6 +7,9 @@ export class FavoritesModel {
   };
 
   static addFavorites = async ({ movieId, title, poster, url, userId }) => {
+    const exist = await Favorite.findOne({ movieId})
+    if (exist) throw new Error('Favorite already exist');
+
     const newFavorite = new Favorite({ movieId, title, poster, url, userId });
     const savedFavorite = await newFavorite.save();
     return savedFavorite;

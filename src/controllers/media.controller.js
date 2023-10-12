@@ -10,7 +10,7 @@ export class MediaController {
 
       res.json(data);
     } catch (error) {
-      res.json(500, error.message);
+      res.status(500).json({ sucess: false, message: error.message });
     }
   }
 
@@ -23,7 +23,7 @@ export class MediaController {
 
       res.json(data);
     } catch (error) {
-      res.json(500, error.message);
+      res.status(500).json({ sucess: false, message: error.message });
     }
   }
 
@@ -37,7 +37,7 @@ export class MediaController {
 
       res.json(data);
     } catch (error) {
-      res.status(500).json(error.message);
+      res.status(500).json({ sucess: false, message: error.message });
     }
   }
 
@@ -51,7 +51,7 @@ export class MediaController {
 
       res.json(data);
     } catch (error) {
-      res.status(500).json(error.message);
+      res.status(500).json({ sucess: false, message: error.message });
     }
   }
 }

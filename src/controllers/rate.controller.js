@@ -11,7 +11,7 @@ export class RateController {
 
       res.json(data);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(500).json({ success: false, message: error.message });
     }
   };
 
@@ -21,7 +21,7 @@ export class RateController {
       const { APIkey } = req.user;
       const { mediaType, id } = req.params;
 
-      if (!mediaType || !id) return res.status(400).json({ message: 'Invalid params' });
+      if (!mediaType || !id) return res.status(422).json({ success: false, message: 'Invalid parameters' });
 
       const { success, status, message } = await RateModel.addRate({ mediaType, id, guestId: APIkey, body });
 
@@ -29,7 +29,7 @@ export class RateController {
 
       res.status(status).json({ success, message });
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(500).json({ success: false, message: error.message });
     }
   };
 
@@ -39,7 +39,7 @@ export class RateController {
       const { APIkey } = req.user;
       const { mediaType, id } = req.params;
 
-      if (!mediaType || !id) return res.status(400).json({ message: 'Invalid params' });
+      if (!mediaType || !id) return res.status(400).json({ success: false, message: 'Invalid parameters' });
 
       const { success, status, message } = await RateModel.removeRate({ mediaType, id, guestId: APIkey, body });
 
@@ -47,7 +47,7 @@ export class RateController {
 
       res.status(status).json({ success, message });
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(500).json({ success: false, message: error.message });
     }
   };
 }
