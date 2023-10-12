@@ -1,4 +1,4 @@
-import { config } from 'dotenv';
+// import { config } from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 
 const app = express();
 
-config();
+// config();
 app.disable('x-powered-by');
 app.use(cors());
 app.use(morgan('dev'));
