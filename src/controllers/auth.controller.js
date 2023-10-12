@@ -9,7 +9,7 @@ const userObj = ({ _id, username, email, APIkey, fullname, gender, picture }) =>
 export class AuthController {
   static Register = async (req, res) => {
     try {
-      const { username, email, password } = req.body;
+      const { email, password } = req.body;
       const newUser = new User({ 
         username: null, 
         email, 
@@ -24,9 +24,9 @@ export class AuthController {
       const token = await createJWT({ id: savedUser._id });
 
       res.cookie('token', token);
-      res.status(201).json({ status: 'Sucess', message: 'The user has been registered', user: userObj(savedUser)  });
+      res.status(201).json({ success: true, message: 'The user has been registered', user: userObj(savedUser)  });
     } catch (error) {
-      res.status(500).json({ status: 'Failure', message: 'The user is already registered' });
+      res.status(500).json({ success: false, message: 'The user is already registered' });
     }
   };
 
@@ -43,9 +43,9 @@ export class AuthController {
       const token = await createJWT({ id: userFound._id });
 
       res.cookie('token', token);
-      res.status(201).json({ status: 'Sucess', message: 'The user has been loged', user: userObj(userFound) });
+      res.status(201).json({ success: true, message: 'The user has been loged', user: userObj(userFound) });
     } catch (error) {
-      res.status(500).json({ status: 'Failure', error });
+      res.status(500).json({ success: false, error });
     }
   };
 

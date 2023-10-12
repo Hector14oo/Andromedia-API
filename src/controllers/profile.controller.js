@@ -9,13 +9,13 @@ export class ProfileController {
 
       res.json({ user: data });
     } catch (error) {
-      res.status(500).json({ status: 'Failure', message: error.message });
+      res.status(500).json({ success: false, message: error.message });
     }
   };
 
   static updateProfile = async (req, res) => {
     try {
-      if(!Object.keys(req.body).length) return res.status(400).json({ status: 'Failure', message: 'Please enter at least one propertie to update the profile' });
+      if(!Object.keys(req.body).length) return res.status(400).json({ success: false, message: 'Please enter at least one propertie to update the profile' });
       const { username, email, password, fullname, gender, picture } = req.body;
 
       const updatedUser = await User.findByIdAndUpdate(
@@ -25,7 +25,7 @@ export class ProfileController {
       );
 
       res.json({
-        status: 'success',
+        success: true,
         message: 'User updated',
         updatedUser: {
           id: updatedUser._id,
@@ -40,7 +40,7 @@ export class ProfileController {
         },
       });
     } catch (error) {
-      res.status(500).json({ status: 'Failure', message: error.message });
+      res.status(500).json({ success: false, message: error.message });
     }
   };
 
@@ -52,13 +52,13 @@ export class ProfileController {
       if (!userDeleted)
         return res
           .status(404)
-          .json({ status: 'Failure', message: 'User not found' });
+          .json({ success: false, message: 'User not found' });
 
       await Favorite.deleteMany({ userId: id });
 
-      res.status(204).json({ status: 'Success', message: 'User deleted' });
+      res.status(204).json({ success: true, message: 'User deleted' });
     } catch (error) {
-      res.status(500).json({ status: 'Failure', message: error.message });
+      res.status(500).json({ success: false, message: error.message });
     }
   };
 }
