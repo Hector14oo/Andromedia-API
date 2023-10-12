@@ -18,7 +18,7 @@ export class FavoritesController {
       const { id } = req.user;
       const data = await FavoritesModel.addFavorites({ movieId, title, poster, url, userId: id });
 
-      res.status(201).json(data);
+      res.status(201).json({ id: data._id, movieId: data.movieId, title: data.title, poster: data.poster, url: data.url, userId: data.userId });
     } catch (error) {
       if(error.message === 'Favorite already exists') return res.status(409).json({ succces: false, message: error.message });
       res.status(500).json({ success: false, message: error.message })
