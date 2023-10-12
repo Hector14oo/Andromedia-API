@@ -8,7 +8,7 @@ export class FavoritesController {
       
       res.status(200).json(data);
     } catch (error) {
-      res.status(400).json({ message: error.message })
+      res.status(500).json({ success: false, message: error.message })
     }
   };
 
@@ -20,21 +20,25 @@ export class FavoritesController {
 
       res.status(201).json(data);
     } catch (error) {
-      res.status(400).json({ message: error.message })
+      if(error.message === 'Favorite already exists') return res.status(409).json({ succces: false, message: error.message });
+      res.status(500).json({ success: false, message: error.message })
     }
   };
   
   static removeFavorite = async (req, res) => {
     try {
       const { id } = req.params;
+      if(!id) return res.status(400).json({ success: false, message: 'Please enter a Favorite id' })
+
       const data = await FavoritesModel.removeFavorite({ favId: id });
       
       if(!data) throw new Error('File not found');
 
-      res.status(204).json({ message: 'Favorite deleted successfully'});
+      res.sendStatus(204);
     } catch (error) {
       if(error.message === 'File not found') return res.status(404).json({ message: error.message });
-      res.status(500).json({ message: error.message })
+      if(error.name === 'CastError') return res.status(400).json({ success: false, message: 'Invalid id' });
+      res.status(500).json({ success: false, message: error.message })
     }
   };
 }
