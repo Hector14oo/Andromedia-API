@@ -6,7 +6,7 @@ export class FavoritesController {
       const { id } = req.user;
       const data = await FavoritesModel.getFavorites({ userId: id });
       
-      res.status(200).json(data);
+      res.status(200).json({ id: data._id, movieId, title, overview, poster, url, userId: data.userId });
     } catch (error) {
       res.status(500).json({ success: false, message: error.message })
     }
