@@ -7,7 +7,7 @@ const filterRatedList = (list, mediaType, lang) => {
   const { page, results, total_pages, total_results } = list;
   return {
     page: page,
-    results: results.map((item) => BasicDetails[mediaType]({ data: item, lang })),
+    results: results.map((item) => ({ ...BasicDetails[mediaType]({ data: item, lang }), yourRate: item.rating})),
     totalPages: total_pages,
     totalResults: total_results,
   }
