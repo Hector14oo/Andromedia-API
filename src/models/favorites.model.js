@@ -6,11 +6,11 @@ export class FavoritesModel {
     return favorites;
   };
 
-  static addFavorites = async ({ movieId, title, poster, url, userId }) => {
-    const exist = await Favorite.findOne({ movieId})
+  static addFavorites = async ({ movieId, title, overview, poster, url, userId }) => {
+    const exist = await Favorite.findOne({ movieId })
     if (exist) throw new Error('Favorite already exist');
 
-    const newFavorite = new Favorite({ movieId, title, poster, url, userId });
+    const newFavorite = new Favorite({ movieId, title, overview, poster, url, userId });
     const savedFavorite = await newFavorite.save();
     return savedFavorite;
   };
