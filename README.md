@@ -16,7 +16,7 @@ These endpoints are available to all users; no token is required to access them.
 * ### Authentication 🔑
 
   These endpoints are for user authentication (registration, login, and logout).
-  <br /> • **`/api/auth/register`** > [Show Details.](docs/auth/readme.md)
+  <br /> • **`/api/auth/register`** > [Show Details.](docs/auth/readme.md) <br /><br />
 
 
 ## Endpoints that require Authentication
