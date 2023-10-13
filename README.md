@@ -3,6 +3,12 @@
 
 Explore detailed information about movies, television programs, and notable personalities. Stay updated on entertainment trends. Session management enables users to rate movies and series, as well as add them to their favorites list, providing a personalized entertainment experience.
 
+<br />
+
+> ## Some endpoints accept "lang" as a query parameter, [Here](docs/language/readme.js) is the list of available languages.
+> ### Example: `/api/media/trending?lang='en-US'`
+
+
 ## Open Endpoints
 These endpoints are available to all users; no token is required to access them.
 
