@@ -3,7 +3,7 @@
 
 Explore detailed information about movies, television programs, and notable personalities. Stay updated on entertainment trends. Session management enables users to rate movies and series, as well as add them to their favorites list, providing a personalized entertainment experience.
 
-### Open Endpoints
+## Open Endpoints
 These endpoints are available to all users; no token is required to access them.
 
 
