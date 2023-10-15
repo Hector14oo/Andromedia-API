@@ -6,7 +6,7 @@ Explore detailed information about movies, television programs, and notable pers
 ### Some endpoints accept 'lang' as a query parameter. 
 [Here](docs/language/readme.md) is the list of available languages.
 
-<hr />
+<br />
 
 ## Open Endpoints
 These endpoints are available to all users, no token is required to access them.
