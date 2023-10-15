@@ -20,6 +20,7 @@ Each endpoint provides information related to the media type being searched for.
 
 These endpoints are for user authentication (registration, login, and logout).
 * **`/api/auth/register`** > [Show Details.](docs/auth/readme.md)
+<br />
 
 ## Endpoints that require Authentication
 
