@@ -7,8 +7,8 @@
 <br />
 
 ## The following list specifies the endpoints that support this query parameter
-### • [`GET /api/media`](../../docs/media/readme.md)
-### • [`GET /api/rate/list`](../../docs/rate/readme.md)
+### • [`/api/media/*`](../../docs/media/readme.md)
+### • [`/api/rate/list`](../../docs/rate/readme.md)
 <br />
 
 ## Here is the table with the list of languages and their corresponding language and regional codes:
