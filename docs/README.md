@@ -2,9 +2,9 @@
 <p>
   We have two types of endpoints: those that require authentication and those that do not. <br />
   <h3>Some endpointsaccept "lang" as a query parameter <a href="docs/language/readme.md">Here</a> is the list of languages. </h3>
-</p
+</p>
 
-<br /><br />
+<br />
 
 <h2>Open Endpoints</h2>
 These endpoints are available to all users, no token is required to access them.
