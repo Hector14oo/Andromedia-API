@@ -20,7 +20,7 @@ export const MEDIADETAILS = ({ mediaType, id, lang = 'en-US' }) => {
 };
 
 export const REVIEWS = ({ mediaType, id }) => `https://api.themoviedb.org/3/${mediaType}/${id}/reviews?${AUTH}`;
-export const MOVIECREDITS = ({ id, lang = 'en-US' }) => `https://api.themoviedb.org/3/movie/${id}/credits?${AUTH}&language=${lang}`;
+export const MEDIACREDITS = ({ mediaType, id, lang = 'en-US' }) => `https://api.themoviedb.org/3/${mediaType}/${id}/credits?${AUTH}&language=${lang}`;
 export const SEASONDETAILS = ({ id, seasonNumber, lang = 'en-US' }) => `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?${AUTH}&language=${lang}`
 
 export const MOVIERATE = ({ id, guestId }) => `https://api.themoviedb.org/3/movie/${id}/rating?${AUTH}&guest_session_id=${guestId}`
