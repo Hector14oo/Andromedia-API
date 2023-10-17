@@ -15,7 +15,7 @@
 
 ## Response
 
-**Schema**: [TrendingSchema](./schemas#TrendingSchema)
+**Schema**: [TrendingSchema](./schema.md#TrendingSchema) <br />
 **Code** : `200 OK` <br />
 
 ```json
