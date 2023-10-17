@@ -1,3 +1,5 @@
+#Schemas
+
 ## SearchSchema
 
 ```json
