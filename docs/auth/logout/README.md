@@ -12,7 +12,6 @@
 
 ## Example of a Successfull Response
 
-**Schema** : [`RegisterSchema`](./schema.md#RegisterSchema) <br />
 **Code** : `204 CREATED` <br />
 
 <br />
