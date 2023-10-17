@@ -36,10 +36,10 @@ export class AuthController {
       const { email, password } = req.body;
 
       const userFound = await User.findOne({ email });
-      if (!userFound) return res.status(400).json({ message: 'Invalid user' });
+      if (!userFound) return res.status(400).json({ success: false, message: 'Invalid user' });
 
       const isMatch = await bcrypt.compare(password, userFound.password);
-      if (!isMatch) return res.status(400).json({ message: 'Invalid password' });
+      if (!isMatch) return res.status(400).json({ success: false, message: 'Invalid password' });
 
       const token = await createJWT({ id: userFound._id });
 
