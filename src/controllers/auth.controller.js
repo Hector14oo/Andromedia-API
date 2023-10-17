@@ -26,7 +26,8 @@ export class AuthController {
       res.cookie('token', token);
       res.status(201).json({ success: true, message: 'The user has been registered', user: userObj(savedUser)  });
     } catch (error) {
-      res.status(500).json({ success: false, message: 'The user is already registered' });
+      if(error.code === 11000) return res.status(409).json({ success: false, message: 'The user is already registered' });
+      res.status(500).json({ success: false, error });
     }
   };
 
@@ -35,7 +36,7 @@ export class AuthController {
       const { email, password } = req.body;
 
       const userFound = await User.findOne({ email });
-      if (!userFound) return res.status(400).json({ message: 'User not found' });
+      if (!userFound) return res.status(400).json({ message: 'Invalid user' });
 
       const isMatch = await bcrypt.compare(password, userFound.password);
       if (!isMatch) return res.status(400).json({ message: 'Invalid password' });
