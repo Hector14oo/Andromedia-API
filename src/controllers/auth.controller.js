@@ -52,6 +52,6 @@ export class AuthController {
 
   static Logout = (req, res) => {
     res.cookie('token', '', { expires: new Date(0) });
-    res.sendStatus(200);
+    res.sendStatus(204);
   };
 }
