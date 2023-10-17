@@ -1,5 +1,5 @@
 import { fetchAPI } from '../libs/fetchAPI.js';
-import { SEARCH, TRENDING, MEDIADETAILS, REVIEWS, MOVIECREDITS, SEASONDETAILS } from '../libs/constants/endpoints.js';
+import { SEARCH, TRENDING, MEDIADETAILS, REVIEWS, MEDIACREDITS, SEASONDETAILS } from '../libs/constants/endpoints.js';
 import { getDetails, getDetailsFromList, getSeasonDetails } from '../libs/filters/index.js';
 import { formatResponse } from '../libs/constants/statusCode.js';
 
@@ -26,8 +26,8 @@ export class Media {
       const reviewsData = await fetchAPI(REVIEWS({ mediaType, id }));
       data.reviews = reviewsData;
     }
-    if (mediaType === 'movie') {
-      const creditsData = await fetchAPI(MOVIECREDITS({ id, lang }));
+    if (mediaType !== 'person') {
+      const creditsData = await fetchAPI(MEDIACREDITS({ mediaType, id, lang }));
       data.credits = creditsData;
     }
 
