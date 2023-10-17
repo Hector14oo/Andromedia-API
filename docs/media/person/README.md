@@ -15,7 +15,7 @@
 
 ## Example of a Successful Response
 
-**Schema** : [`PersonDetailsSchema`](./schema.md)
+**Schema** : [`PersonDetailsSchema`](./schema.md) <br />
 **Code** : `200 OK` <br />
 **Parameters** : 
 * `personId` = 91606
