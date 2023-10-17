@@ -1,5 +1,6 @@
 import { getGenres } from '../../constants/genres.js';
 import { imagesObj, imagesFromList, videosFromList, reviewsFilter, seasonDetailsFromList } from './extras/index.js';
+import { personBasicDetails } from './person.js';
 
 export const tvShowBasicDetails = ({ data, lang }) => {
   const { id, name, adult, genre_ids, tagline, overview, poster_path, backdrop_path, first_air_date, vote_average, media_type } = data;
@@ -22,8 +23,8 @@ export const tvShowBasicDetails = ({ data, lang }) => {
   };
 };
 
-export const tvShowExtraDetails = ({data, reviews, lang}) => {
-  const { id, name, adult, genres, tagline, overview, images, videos, first_air_date, vote_average, seasons, status } = data;
+export const tvShowExtraDetails = ({data, reviews, credits, lang}) => {
+  const { id, name, adult, genres, tagline, overview, images, videos, first_air_date, seasons, status, vote_average } = data;
 
   return {
     id,
@@ -42,5 +43,9 @@ export const tvShowExtraDetails = ({data, reviews, lang}) => {
     year: first_air_date,
     status,
     votes: vote_average,
+    credits: {
+      cast: credits.cast.map(({ character, ...data }) => ({ character, ...personBasicDetails({ data, lang }) })),
+      crew: credits.crew.map(({ department, job, ...data }) => ({ department, job, ...personBasicDetails({ data, lang }) })),
+    },
   };
 };
