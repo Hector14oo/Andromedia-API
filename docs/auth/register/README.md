@@ -45,7 +45,7 @@ Content-Type: application/json
 
 ## Example of a Failed Response 
 
-**Code** : 409
+**Code** : `409 CONFLICT`
 
 ```json
 {
