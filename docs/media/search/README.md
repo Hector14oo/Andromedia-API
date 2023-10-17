@@ -12,7 +12,7 @@
 
 ## Success Response
 
-**Schema**: [`SearchSchema`](./schema#SearchSchema)
+**Schema**: [`SearchSchema`](./schema.md#SearchSchema) <br />
 **Code** : `200 OK` <br />
 **Query**: `scarface`
 
