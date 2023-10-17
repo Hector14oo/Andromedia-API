@@ -15,7 +15,7 @@
 
 ## Example of a Successfull Response
 
-**Schema** : [`MovieDetailsSchema`](./schema.md)
+**Schema** : [`MovieDetailsSchema`](./schema.md#MovieDetailsSchema) <br />
 **Code** : `200 OK` <br />
 **Parameters** : 
 * `movieId` = 111
