@@ -9,7 +9,7 @@ export const seasonDetailsFromList = ({ list, showId, lang }) => {
       number: season_number,
       episodesCount: episode_count,
       poster: poster_path ? imagesObj({ poster_path }).poster : null,
-      url: `http://localhost:1234/api/media/tv/${showId}/season/${season_number}?lang=${lang}`,
+      url: `${globalThis.process.env.HOST}api/media/tv/${showId}/season/${season_number}?lang=${lang}`,
     })
   );
 };
