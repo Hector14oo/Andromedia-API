@@ -45,7 +45,7 @@ Content-Type: application/json
 
 ## Example of a Failed Response 
 
-**Code** : 400
+**Code** : `400 BAD REQUEST`
 
 ```json
 { 
