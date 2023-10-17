@@ -51,7 +51,7 @@ export const movieExtraDetails = ({ data, reviews, credits, lang }) => {
       backdrops: imagesFromList(images.backdrops),
     },
     videos: videosFromList(videos.results),
-    date: release_date,
+    year: release_date,
     votes: vote_average,
     collection: collection || null,
     credits: {

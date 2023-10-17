@@ -9,7 +9,7 @@ export const seasonDetailsFromList = ({ list, showId, lang }) => {
       number: season_number,
       episodesCount: episode_count,
       poster: poster_path ? imagesObj({ poster_path }).poster : null,
-      url: `http://localhost:1234/api/media/tv/${showId}/season/${season_number}?lang=${lang}`,
+      url: `${globalThis.process.env.HOST}api/media/tv/${showId}/season/${season_number}?lang=${lang}`,
     })
   );
 };
@@ -30,7 +30,7 @@ export const seasonExtraDetails = ({ season }) => {
     id,
     title: name,
     number: season_number,
-    date: air_date,
+    year: air_date,
     overview,
     episodes: episodeFilter({ list: episodes}),
     poster: poster_path ? imagesObj({ poster_path }).poster : null,
@@ -53,7 +53,7 @@ const episodeFilter = ({ list }) => {
       id,
       title: name,
       number: episode_number,
-      date: air_date,
+      year: air_date,
       overview,
       duration: runtimeCalculator(runtime),
       preview: still_path

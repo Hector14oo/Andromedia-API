@@ -1,4 +1,4 @@
-# Search Media
+# Media Trending
 
 **Method** : `GET`
 
@@ -11,42 +11,11 @@
 **Query Parameters** : 
 * `timeWindow = (week | day)`: Is used to change the time window for the received trends, if this parameter is not provided, it will default to "week".
 
-
-## Schema
-
-```json
-{
-  "page": number,
-  "results": [
-    {
-      "id": number,
-      "title": string,
-      "adult": boolean,
-      "genres": array,
-      "overview": string,
-      "poster": {
-        light: string,
-        original: string
-      },
-      "backdrop": {
-        light: string,
-        original: string
-      },
-      "year": string,
-      "votes": number,
-      "type": string,
-      "url": string
-    },
-    ... max: 19 items more per page.
-  ],
-  "totalResults": number,
-  "totalPages": number
-}
-```
 <br />
 
 ## Response
 
+**Schema**: [TrendingSchema](./schemas#TrendingSchema)
 **Code** : `200 OK` <br />
 
 ```json
@@ -57,7 +26,7 @@
       "id": 575264,
       "title": "Mission: Impossible - Dead Reckoning Part One",
       "adult": false,
-        "genres": [
+      "genres": [
         "Action",
         "Thriller"
       ],

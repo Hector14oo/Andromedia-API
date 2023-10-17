@@ -8,41 +8,11 @@
 
 **Lang Support**: `True` 
 
-## Schema
-
-```json
-{
-  "page": number,
-  "results": [
-    {
-      "id": number,
-      "title": string,
-      "adult": boolean,
-      "genres": array,
-      "overview": string,
-      "poster": {
-        light: string,
-        original: string
-      },
-      "backdrop": {
-        light: string,
-        original: string
-      },
-      "year": string,
-      "votes": number,
-      "type": string,
-      "url": string
-    },
-    ... max: 19 items more per page.
-  ],
-  "totalResults": number,
-  "totalPages": number
-}
-```
 <br />
 
-## Response
+## Success Response
 
+**Schema**: [`SearchSchema`](./schema#SearchSchema)
 **Code** : `200 OK` <br />
 **Query**: `scarface`
 
@@ -79,4 +49,3 @@
   "totalPages": 27
 }
 ```
-
