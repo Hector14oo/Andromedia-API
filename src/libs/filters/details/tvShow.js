@@ -16,7 +16,7 @@ export const tvShowBasicDetails = ({ data, lang }) => {
     tagline,
     overview,
     ...imagesObj({poster_path, backdrop_path}),
-    date: first_air_date,
+    year: first_air_date,
     votes: vote_average,
     type: media_type,
     url,
@@ -40,7 +40,7 @@ export const tvShowExtraDetails = ({data, reviews, credits, lang}) => {
       backdrops: imagesFromList(images.backdrops),
     },
     videos: videosFromList(videos.results),
-    date: first_air_date,
+    year: first_air_date,
     status,
     votes: vote_average,
     credits: {

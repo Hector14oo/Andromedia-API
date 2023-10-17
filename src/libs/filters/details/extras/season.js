@@ -30,7 +30,7 @@ export const seasonExtraDetails = ({ season }) => {
     id,
     title: name,
     number: season_number,
-    date: air_date,
+    year: air_date,
     overview,
     episodes: episodeFilter({ list: episodes}),
     poster: poster_path ? imagesObj({ poster_path }).poster : null,
@@ -53,7 +53,7 @@ const episodeFilter = ({ list }) => {
       id,
       title: name,
       number: episode_number,
-      date: air_date,
+      year: air_date,
       overview,
       duration: runtimeCalculator(runtime),
       preview: still_path
