@@ -16,7 +16,7 @@
 
 ## Example of a Successful Response
 
-**Schema** : [`tvSeasonDetailsSchema`](./schema.md)
+**Schema** : [`tvSeasonDetailsSchema`](./schema.md) <br />
 **Code** : `200 OK` <br />
 **Parameters** : 
 * `tvShowId` = 84958
