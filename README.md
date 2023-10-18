@@ -1,4 +1,4 @@
-<p align="center" > <img src="https://i.imgur.com/D9kHQiG.png" width="100%" height="250px" /> </p>
+<p align="center" > <img src="https://i.imgur.com/HnxjZDU.png" width="100%" height="150px" /> </p>
 
 <h1 align="center" >Galaxy Media REST API</h1>
 
