@@ -2,6 +2,6 @@
 
 #### This is the list of available endpoints to Profile administration.
 
-#### • [`POST /api/profile`](./get/README.md)
-#### • [`POST /api/profile/update`](./update/README.md)
-#### • [`POST /api/profile/delete`](./delete/README.md)
+#### • [`GET /api/profile`](./get/README.md)
+#### • [`PUT /api/profile/update`](./update/README.md)
+#### • [`DELETE /api/profile/delete`](./delete/README.md)
