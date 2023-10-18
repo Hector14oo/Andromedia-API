@@ -4,4 +4,4 @@
 
 #### • [`GET /api/favorites`](./get/README.md)
 #### • [`POST /api/favorites`](./add/README.md)
-#### • [`DELETE /api/profile/{favId}`](./delete/README.md)
+#### • [`DELETE /api/favorites/{favId}`](./delete/README.md)
