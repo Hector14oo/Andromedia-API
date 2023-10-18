@@ -1,7 +1,7 @@
-# Media data endpoints 🎥
+# Profile endpoints 🤓
 
-#### This is the list of available endpoints to Authenticate an user.
+#### This is the list of available endpoints to Profile administration.
 
-#### • [`POST /api/auth/register`](./register/README.md#Register)
-#### • [`POST /api/auth/login`](./login/README.md#Login)
-#### • [`POST /api/auth/logout`](./logout/README.md)
+#### • [`POST /api/profile`](./get/README.md)
+#### • [`POST /api/profile/update`](./update/README.md)
+#### • [`POST /api/profile/delete`](./delete/README.md)
