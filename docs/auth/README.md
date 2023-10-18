@@ -1,4 +1,4 @@
-# Media data endpoints 🎥
+# Authentication endpoints 🔑
 
 #### This is the list of available endpoints to Authenticate an user.
 
