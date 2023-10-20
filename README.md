@@ -1,4 +1,4 @@
-<p align="center" > <img src="https://i.imgur.com/HnxjZDU.png" width="100%" height="150px" /> </p>
+<p align="center" > <img src="https://i.imgur.com/Yvyz2mN.png" width="200px" height="200px" /> </p>
 
 <h1 align="center" >Andro-Media REST API</h1>
 
