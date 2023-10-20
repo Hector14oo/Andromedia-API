@@ -13,4 +13,4 @@
 
 <br />
 
-> <h3 align="center" > Galaxy Media makes use of an external API (<a href="docs/README.md">TMDB</a>) from which movie, series, and personnel data is obtained. This data undergoes a data extraction process to the most relevant information. Additionally, resource constructions are performed to ensure that the data is readily available for clients to use without the need for further transformation. </h3>
+> <h3 align="center" > Andro-Media makes use of an external API (<a href="docs/README.md">TMDB</a>) from which movie, series, and personnel data is obtained. This data undergoes a data extraction process to the most relevant information. Additionally, resource constructions are performed to ensure that the data is readily available for clients to use without the need for further transformation. </h3>
