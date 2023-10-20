@@ -1,6 +1,6 @@
 <p align="center" > <img src="https://i.imgur.com/HnxjZDU.png" width="100%" height="150px" /> </p>
 
-<h1 align="center" >Galaxy Media REST API</h1>
+<h1 align="center" >Andro-Media REST API</h1>
 
 <h4 align="center" > 
   Explore detailed information about movies, television programs, and notable personalities. Stay updated on entertainment trends. Session management enables users to rate movies and series, as well as add them 
