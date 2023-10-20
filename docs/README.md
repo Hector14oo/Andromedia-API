@@ -1,8 +1,13 @@
-<h1>Endpoints</h1>
-<p>
+
+<h1 align="center" >Endpoints</h1>
+<p align="center" >
   We have two types of endpoints: those that require authentication and those that do not. <br />
-  <h3>Some endpoints accept "lang" as a query parameter <a href="./language/readme.md">Here</a> is the list of languages. </h3>
 </p>
+<h3 align="center" >Some endpoints accept "lang" as a query parameter <a href="./language/readme.md">Here</a> is the list of languages. </h3>
+
+<br />
+
+<p align="center" > <img src="https://i.imgur.com/HnxjZDU.png" width="100%" height="150px" /> </p>
 
 <br />
 
