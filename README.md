@@ -1,4 +1,4 @@
-<h1 align="center" > <img src="https://i.imgur.com/GqGi60g.png" width="220px" height="310px" /> <br /> </h1>
+<h1 align="center" > <img src="https://i.imgur.com/QN1yHIo.png" width="220px" height="310px" /> <br /> </h1>
 
 <h4 align="center" > 
   Explore detailed information about movies, television programs, and notable personalities. Stay updated on entertainment trends. Session management enables users to rate movies and series, as well as add them 
